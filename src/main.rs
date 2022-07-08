@@ -43,18 +43,22 @@ fn main() {
         })
     };
     let browser = browser.expect("Failed to open browser");
+    println!("Browser opened");
 
     // Wait for the browser to finish loading.
     let tab = browser.wait_for_initial_tab().expect("failed to wait for initial tab");
+    println!("Tab opened");
 
     // Register a response handler.
     tab.enable_response_handling(create_response_handler(Box::new(move |_| {
         tx.send(true).unwrap();
     })))
         .expect("Failed to register response handler");
+    println!("Response handler registered");
 
     // Load a page.
     tab.navigate_to(PAGE_URL).expect("failed to navigate to the page");
+    println!("Navigated to the page");
 
     // Wait for the response handler to be called.
     loop {
