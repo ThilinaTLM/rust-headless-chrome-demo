@@ -1,0 +1,7 @@
+[package]
+name = "rust-headless-chrome-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+headless_chrome = {git = "https://github.com/atroche/rust-headless-chrome", tag = "v1.0.0"}
